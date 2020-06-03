@@ -3,31 +3,21 @@
     <v-row>
       <v-col cols=" 12" sm="6">
         <v-select
-          v-model="beneficiary"
-          :items="beneficiaries"
-          :rules="beneficiaryRules"
-          label="Beneficiary Name *"
-          required
+          v-model="applicant"
+          :items="applicants"
+          label="Applicant *"
+          :rules="applicantRules"
         ></v-select>
       </v-col>
       <v-col cols=" 12" sm="6">
         <v-select
-          v-model="applicant"
-          :items="applicants"
-          label="Applicant"
+          v-model="beneficiary"
+          :items="beneficiaries"
+          label="Beneficiary Name"
         ></v-select>
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols=" 12" sm="6">
-        <v-select
-          v-model="facility"
-          :items="facilities"
-          :rules="facilityRules"
-          label="Facility *"
-          required
-        ></v-select>
-      </v-col>
       <v-col cols=" 12" sm="6">
         <v-select
           v-model="issuingBank"
@@ -37,8 +27,6 @@
           required
         ></v-select>
       </v-col>
-    </v-row>
-    <v-row>
       <v-col cols="12" md="6">
         <v-text-field
           v-model="lcRefNumber"
@@ -48,6 +36,8 @@
         >
         </v-text-field>
       </v-col>
+    </v-row>
+    <v-row>
       <v-col cols=" 12" sm="6">
         <v-menu
           v-model="expiryDatePicker"
@@ -73,8 +63,6 @@
           ></v-date-picker>
         </v-menu>
       </v-col>
-    </v-row>
-    <v-row>
       <v-col cols=" 12" sm="6">
         <v-select
           v-model="lcType"
@@ -100,15 +88,6 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col cols=" 12" sm="6">
-        <v-select
-          v-model="tranche"
-          :items="tranches"
-          :rules="trancheRules"
-          label="Tranche *"
-          required
-        ></v-select>
-      </v-col>
       <v-col cols=" 12" sm="6">
         <v-menu
           v-model="issuanceDatePicker"
@@ -227,13 +206,11 @@ export default {
     issuanceDatePicker: false,
 
     // validation
-    beneficiaryRules: validation.beneficiary,
-    facilityRules: validation.facility,
+    applicantRules: validation.applicant,
     issuingBankRules: validation.issuingBank,
     expiryDateRules: validation.expiryDate,
     lcTypeRules: validation.lcType,
     faceValueRules: validation.faceValue,
-    trancheRules: validation.tranche,
     issuanceDateRules: validation.issuanceDate,
     currencyRules: validation.currency,
     lcRefNumberRules: validation.lcRefNumber
@@ -242,14 +219,12 @@ export default {
     // values
     beneficiary: getSet("beneficiary"),
     applicant: getSet("applicant"),
-    facility: getSet("facility"),
     issuingBank: getSet("issuingBank"),
     lcRefNumber: getSet("lcRefNumber"),
     expiryDate: getSet("expiryDate"),
     lcType: getSet("lcType"),
     faceValue: getSet("faceValue"),
     tolerance: getSet("tolerance"),
-    tranche: getSet("tranche"),
     issuanceDate: getSet("issuanceDate"),
     newIssuanceFee: getSet("newIssuanceFee"),
     autoCancellation: getSet("autoCancellation"),
@@ -269,9 +244,6 @@ export default {
     applicants() {
       return this.$store.state.applicants;
     },
-    facilities() {
-      return this.$store.state.facilities;
-    },
     issuingBanks() {
       return this.$store.state.issuingBanks;
     },
@@ -280,9 +252,6 @@ export default {
     },
     currencies() {
       return this.$store.state.currencies;
-    },
-    tranches() {
-      return this.$store.state.tranches;
     }
   },
   methods: {

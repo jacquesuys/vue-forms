@@ -11,7 +11,7 @@
         <Outgoing />
       </v-card-text>
       <v-card-text v-if="direction === 'incoming'">
-        Outgoing
+        <Incoming />
       </v-card-text>
     </v-card>
   </v-container>
@@ -19,6 +19,7 @@
 
 <script>
 import Outgoing from "@/components/Outgoing";
+import Incoming from "@/components/Incoming.vue";
 
 export default {
   name: "Home",
@@ -33,7 +34,8 @@ export default {
     }
   },
   components: {
-    Outgoing
+    Outgoing,
+    Incoming
   }
 };
 </script>

@@ -11,5 +11,7 @@ export default {
   faceValue: [v => lengthRule(v) || "You must specify the face value"],
   issuingBank: [v => lengthRule(v) || "You must select the issuing bank"],
   facility: [v => lengthRule(v) || "You must select the facility"],
-  beneficiary: [v => lengthRule(v) || "You must select the beneficiary"]
+  beneficiary: [v => lengthRule(v) || "You must select the beneficiary"],
+  applicant: [v => lengthRule(v) || "You must select the applicant"],
+  lcType: [v => lengthRule(v) || "You must select the LC type"]
 };

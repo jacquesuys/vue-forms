@@ -13,6 +13,7 @@ export default new Vuex.Store({
       issuingBank: "",
       lcRefNumber: "",
       expiryDate: new Date().toISOString().substr(0, 10),
+      lcType: "",
       faceValue: "",
       tolerance: "",
       tranche: "",
@@ -27,6 +28,7 @@ export default new Vuex.Store({
     },
     direction: "outgoing",
     currencies,
+    lcTypes: ["LC Type 1", "LC Type 2", "LC Type 3"],
     applicants: [
       "Applicants 1",
       "Applicants 2",
