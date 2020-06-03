@@ -1,18 +1,39 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
-  </div>
+  <v-container>
+    <v-card>
+      <v-card-title class="headline">
+        <v-radio-group label="Direction: " v-model="direction" row>
+          <v-radio label="Outgoing" :value="'outgoing'"></v-radio>
+          <v-radio label="Incoming" :value="'incoming'"></v-radio>
+        </v-radio-group>
+      </v-card-title>
+      <v-card-text v-if="direction === 'outgoing'">
+        <Outgoing />
+      </v-card-text>
+      <v-card-text v-if="direction === 'incoming'">
+        Outgoing
+      </v-card-text>
+    </v-card>
+  </v-container>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import Outgoing from "@/components/Outgoing";
 
 export default {
   name: "Home",
+  computed: {
+    direction: {
+      get() {
+        return this.$store.state.direction;
+      },
+      set(value) {
+        this.$store.commit("direction", value);
+      }
+    }
+  },
   components: {
-    HelloWorld
+    Outgoing
   }
 };
 </script>
