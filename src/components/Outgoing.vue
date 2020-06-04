@@ -7,6 +7,7 @@
           :items="beneficiaries"
           :rules="beneficiaryRules"
           label="Beneficiary Name *"
+          data-cy="beneficiary"
           required
         ></v-select>
       </v-col>
@@ -44,6 +45,7 @@
           v-model="lcRefNumber"
           label="LC Reference Number *"
           :rules="lcRefNumberRules"
+          data-cy="lc-ref-number"
           required
         >
         </v-text-field>
@@ -91,6 +93,7 @@
           v-model="faceValue"
           label="Face Value *"
           :rules="faceValueRules"
+          data-cy="face-value"
           required
         >
         </v-text-field>
@@ -198,15 +201,20 @@
     <v-row>
       <v-col cols="12">
         <div class="form-controls">
-          <v-btn :disabled="!valid" color="primary" @click="submit">
+          <v-btn
+            :disabled="!valid"
+            color="primary"
+            @click="submit"
+            data-cy="submit-btn"
+          >
             Submit
           </v-btn>
           <v-spacer></v-spacer>
-          <v-btn @click="reset">
+          <v-btn @click="reset" data-cy="reset-btn">
             Reset
           </v-btn>
           <v-spacer></v-spacer>
-          <v-btn @click="save">
+          <v-btn @click="save" data-cy="save-btn">
             Save
           </v-btn>
         </div>
@@ -303,7 +311,7 @@ export default {
       }
     },
     save() {
-      console.log("save");
+      this.$store.commit("save");
     },
     reset() {
       this.$refs.form.reset();
